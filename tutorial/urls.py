@@ -27,10 +27,6 @@ router.register(r'teacher', student_view.TeacherSerializer)
 router.register(r'student', student_view.StudentSerializer)
 router.register(r'subject', student_view.SubjectSerializer)
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-# ]
-
 urlpatterns = [
   path('', include(router.urls)),
   path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),

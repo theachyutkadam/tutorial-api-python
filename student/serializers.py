@@ -7,12 +7,14 @@ class TeacherSerializer(serializers.ModelSerializer):
     model = Teacher
     fields = ('first_name', 'last_name', 'birth_date', 'qulification', 'contact', 'is_active')
 
-class StudentSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = Student
-    fields = ('first_name', 'last_name', 'birth_date', 'contact', 'is_active', 'subject')
-
 class SubjectSerializer(serializers.ModelSerializer):
+  # teacher = TeacherSerializer()
   class Meta:
     model = Subject
     fields = ('name', 'department', 'chapter_count', 'is_active', 'teacher')
+
+class StudentSerializer(serializers.ModelSerializer):
+  # subject = SubjectSerializer()
+  class Meta:
+    model = Student
+    fields = ('first_name', 'last_name', 'birth_date', 'contact', 'is_active', 'subject')
