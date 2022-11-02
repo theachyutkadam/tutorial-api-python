@@ -1,6 +1,6 @@
 from dataclasses import fields
 from rest_framework import serializers
-from student.models import Student, Teacher, Subject
+from .models import Student, Teacher, Subject
 
 class TeacherSerializer(serializers.ModelSerializer):
   class Meta:
