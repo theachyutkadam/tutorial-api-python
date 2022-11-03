@@ -13,8 +13,8 @@ class SubjectSerializer(serializers.HyperlinkedModelSerializer):
     model = Subject
     fields = ('id', 'url', 'name', 'department', 'chapter_count', 'is_active', 'teacher')
 
-class StudentSerializer(serializers.HyperlinkedModelSerializer):
+class StudentSerializer(serializers.ModelSerializer):
   # subject = SubjectSerializer()
   class Meta:
     model = Student
-    fields = ('id', 'url', 'first_name', 'last_name', 'birth_date', 'contact', 'is_active', 'subject', 'image')
+    fields = ('id', 'first_name', 'last_name', 'birth_date', 'contact', 'is_active', 'subject', 'image')
