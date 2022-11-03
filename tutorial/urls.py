@@ -30,5 +30,5 @@ router.register(r'subject', student_view.SubjectSerializer)
 urlpatterns = [
   path('', include(router.urls)),
   path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-  path('star-wars/', include('student.urls')),
+#   path('star-wars/', include('student.urls')),
 ]
