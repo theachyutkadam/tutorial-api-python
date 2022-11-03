@@ -2,19 +2,19 @@ from dataclasses import fields
 from rest_framework import serializers
 from .models import Student, Teacher, Subject
 
-class TeacherSerializer(serializers.ModelSerializer):
+class TeacherSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Teacher
-    fields = ('first_name', 'last_name', 'birth_date', 'qulification', 'contact', 'is_active')
+    fields = ('id', 'url', 'first_name', 'last_name', 'birth_date', 'qulification', 'contact', 'is_active')
 
-class SubjectSerializer(serializers.ModelSerializer):
+class SubjectSerializer(serializers.HyperlinkedModelSerializer):
   # teacher = TeacherSerializer()
   class Meta:
     model = Subject
-    fields = ('name', 'department', 'chapter_count', 'is_active', 'teacher')
+    fields = ('id', 'url', 'name', 'department', 'chapter_count', 'is_active', 'teacher')
 
-class StudentSerializer(serializers.ModelSerializer):
+class StudentSerializer(serializers.HyperlinkedModelSerializer):
   # subject = SubjectSerializer()
   class Meta:
     model = Student
-    fields = ('first_name', 'last_name', 'birth_date', 'contact', 'is_active', 'subject')
+    fields = ('id', 'url', 'first_name', 'last_name', 'birth_date', 'contact', 'is_active', 'subject')
