@@ -13,11 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# from django.contrib import admin
+from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from quickstart import views as quick_start_view
 from student import views as student_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.register(r'users', quick_start_view.UserViewSet)
@@ -26,9 +28,14 @@ router.register(r'groups', quick_start_view.GroupViewSet)
 router.register(r'teacher', student_view.TeacherSerializer)
 router.register(r'student', student_view.StudentSerializer)
 router.register(r'subject', student_view.SubjectSerializer)
+# router.register(r'image', student_view.SubjectSerializer)
 
 urlpatterns = [
+#   path('admin/', admin.site.urls),
   path('', include(router.urls)),
   path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 #   path('star-wars/', include('student.urls')),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

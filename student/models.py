@@ -1,5 +1,17 @@
 from django.db import models
+from versatileimagefield.fields import VersatileImageField, PPOIField
 
+class Image(models.Model):
+  name = models.CharField(max_length=255)
+  image = VersatileImageField(
+    'Image',
+    upload_to='images/',
+    ppoi_field='image_ppoi'
+  )
+  image_ppoi = PPOIField()
+
+  def __str__(self):
+    return self.name
 # Create your models here.
 class Teacher(models.Model):
   first_name = models.CharField(max_length=30)
@@ -23,3 +35,4 @@ class Student(models.Model):
   contact = models.CharField(max_length=10)
   is_active = models.BooleanField()
   subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING)
+  image = models.ManyToManyField('student.Image', related_name='student')
