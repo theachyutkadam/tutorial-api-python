@@ -18,10 +18,12 @@ from django.urls import include, path
 from rest_framework import routers
 from quickstart import views as quick_start_view
 from student import views as student_view
+from hobby import views as hobby_view
 
 router = routers.DefaultRouter()
 router.register(r'users', quick_start_view.UserViewSet)
 router.register(r'groups', quick_start_view.GroupViewSet)
+router.register(r'hobby', hobby_view.HobbySerializer)
 
 router.register(r'teacher', student_view.TeacherSerializer)
 router.register(r'student', student_view.StudentSerializer)
