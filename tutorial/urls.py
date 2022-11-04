@@ -25,7 +25,11 @@ router.register(r'users', quick_start_view.UserViewSet)
 router.register(r'groups', quick_start_view.GroupViewSet)
 router.register(r'hobby', hobby_view.HobbySerializer)
 
-router.register(r'teacher', student_view.TeacherSerializer)
+router.register(r'teacher', TeacherViewSet, basename='Teacher')
+# router.register(r'teacher', student_view.TeacherSerializer)
+  # path('student/', views.TeacherList.as_view()),
+  # path('student/<int:pk>/', views.TeacherDetail.as_view()),
+
 router.register(r'student', student_view.StudentSerializer)
 router.register(r'subject', student_view.SubjectSerializer)
 
